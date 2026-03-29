@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Healthcare Primary - Teal */
+    --primary: 173 58% 39%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Background & Surfaces */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    /* Secondary - Soft Blue */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    
+    /* Muted */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Accent - Warm Coral for Actions */
+    --accent: 12 76% 61%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 173 58% 39%;
+    
+    --radius: 0.75rem;
+    
+    /* OPD Department Colors */
+    --opd-gynecology: 330 65% 55%;
+    --opd-pediatrics: 45 93% 47%;
+    --opd-ent: 199 89% 48%;
+    --opd-dental: 142 71% 45%;
+    --opd-general: 262 52% 47%;
+    --opd-cardiology: 0 72% 51%;
+    
+    /* Status Colors */
+    --status-waiting: 45 93% 47%;
+    --status-in-progress: 199 89% 48%;
+    --status-completed: 142 71% 45%;
+    --status-pending: 262 52% 47%;
+    --status-urgent: 0 72% 51%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(173 58% 39%) 0%, hsl(199 89% 48%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(12 76% 61%) 0%, hsl(45 93% 47%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(173 58% 39%) 0%, hsl(173 58% 29%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1), 0 2px 4px -2px hsl(222 47% 11% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
+    --shadow-glow: 0 0 20px hsl(173 58% 39% / 0.3);
+    
+    /* Sidebar */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 173 58% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 173 58% 39%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 173 58% 45%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 12 76% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 173 58% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .opd-card {
+    @apply relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .queue-item {
+    @apply flex items-center justify-between p-4 rounded-lg bg-card border border-border transition-all duration-200 hover:border-primary/30;
+  }
+  
+  .workflow-step {
+    @apply flex flex-col items-center gap-2 p-4 rounded-lg transition-all duration-200;
+  }
+  
+  .workflow-step-active {
+    @apply bg-primary/10 ring-2 ring-primary;
+  }
+  
+  .workflow-step-completed {
+    @apply bg-green-50 text-green-700;
+  }
+  
+  .token-display {
+    @apply font-mono text-2xl font-bold tracking-wider;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
